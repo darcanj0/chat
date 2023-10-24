@@ -16,17 +16,19 @@ class MyApp extends StatelessWidget {
     );
 
     final textTheme = TextTheme(
-      displayLarge: TextStyle(
-        color: colorScheme.onPrimary,
-        fontSize: 40,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 2,
-      ),
-      displayMedium: TextStyle(
-        color: colorScheme.onBackground,
-        fontSize: 30,
-      ),
-    );
+        displayLarge: TextStyle(
+          color: colorScheme.onPrimary,
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 2,
+        ),
+        displayMedium: TextStyle(
+          color: colorScheme.onBackground,
+          fontSize: 30,
+        ),
+        displaySmall: TextStyle(
+          fontSize: 20,
+        ));
 
     final darkTextTheme = TextTheme(
       displayMedium: TextStyle(

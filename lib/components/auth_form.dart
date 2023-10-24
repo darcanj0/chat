@@ -4,8 +4,8 @@ import 'package:chat/util/validation.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
-  const AuthForm({super.key});
-
+  const AuthForm({required this.onSubmit, super.key});
+  final void Function(AuthModel) onSubmit;
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
@@ -17,6 +17,7 @@ class _AuthFormState extends State<AuthForm> with ThemeConsumer {
   void submitForm() {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+      widget.onSubmit(_formData);
     }
   }
 

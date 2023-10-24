@@ -1,4 +1,4 @@
-import 'package:chat/pages/loading_page.dart';
+import 'package:chat/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
     );
 
     final textTheme = TextTheme(
+      displayLarge: TextStyle(
+        color: colorScheme.onPrimary,
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 3,
+      ),
       displayMedium: TextStyle(
         color: colorScheme.onBackground,
         fontSize: 30,
@@ -30,7 +36,7 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'Chat App',
+      title: 'Talkative',
       themeMode: ThemeMode.system,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -43,7 +49,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: const LoadingPage(),
+      home: const AuthPage(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         color: colorScheme.onPrimary,
         fontSize: 40,
         fontWeight: FontWeight.bold,
-        letterSpacing: 3,
+        letterSpacing: 2,
       ),
       displayMedium: TextStyle(
         color: colorScheme.onBackground,

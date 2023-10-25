@@ -10,9 +10,9 @@ class AuthServiceMock implements IAuthService {
   static final Map<String, ChatUser> _users = {
     'dan@.com': const ChatUser(
       id: 'id',
-      name: 'name',
-      email: 'email',
-      imageUrl: 'imageUrl',
+      name: 'User',
+      email: 'dan@.com',
+      imageUrl: 'assets/default_avatar.png',
     )
   };
   static final IIdProvider _idProvider = UUIDProvider();
@@ -45,7 +45,12 @@ class AuthServiceMock implements IAuthService {
 
   final Stream<ChatUser?> _userStream = Stream.multi((p0) {
     _controller = p0;
-    _updateUser(null);
+    _updateUser(const ChatUser(
+      id: 'id',
+      name: 'User',
+      email: 'dan@.com',
+      imageUrl: 'assets/default_avatar.png',
+    ));
   });
 
   static void _updateUser(ChatUser? user) {

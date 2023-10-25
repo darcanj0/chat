@@ -1,4 +1,4 @@
-import 'package:chat/models/auth_model.dart';
+import '../../core/models/auth_model.dart';
 import 'package:chat/util/theme_consumer.dart';
 import 'package:flutter/material.dart';
 import '../components/auth_form.dart';
@@ -13,14 +13,16 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> with ThemeConsumer {
   bool isLoading = false;
 
-  void handleSubmit(AuthModel authModel) {
-    setState(() {
-      isLoading = true;
-    });
-    print(authModel.email);
-    print(authModel.password);
-    print(authModel.name);
-    print(authModel.image?.path);
+  Future<void> handleSubmit(AuthModel authModel) async {
+    try {
+      setState(() => isLoading = true);
+      if (authModel.isLogin) {
+
+      } else {}
+    } catch (e) {
+    } finally {
+      setState(() => isLoading = true);
+    }
   }
 
   @override

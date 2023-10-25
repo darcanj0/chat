@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
         ),
         displaySmall: TextStyle(
           fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: colorScheme.onBackground,
         ));
 
     final darkTextTheme = TextTheme(

@@ -28,7 +28,7 @@ class _AuthFormState extends State<AuthForm>
     fromRightController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     toLeftController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
+        vsync: this, duration: const Duration(milliseconds: 300));
     toLeftAnimation = Tween<Offset>(
             begin: Offset.zero, end: const Offset(-5, 0))
         .animate(CurvedAnimation(parent: toLeftController, curve: Curves.ease));

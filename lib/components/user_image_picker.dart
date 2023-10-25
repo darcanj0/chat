@@ -109,7 +109,20 @@ class _UserImagePickerState extends State<UserImagePicker> with ThemeConsumer {
                 (states) => getColorScheme(context).tertiaryContainer,
               )),
               onPressed: () {
-                widget.onFinish();
+                if (selectedImage == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text(
+                        'You must have a profile picture',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      duration: const Duration(seconds: 2),
+                      backgroundColor: getColorScheme(context).error,
+                    ),
+                  );
+                } else {
+                  widget.onFinish();
+                }
               },
               child: const Text(
                 'Confirm',

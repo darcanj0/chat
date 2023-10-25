@@ -1,5 +1,5 @@
 import 'package:chat/core/services/auth/infra/auth_service_mock.dart';
-import 'package:chat/pages/app_proxy_page.dart';
+import 'package:chat/interface/pages/app_proxy_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

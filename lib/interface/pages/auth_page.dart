@@ -4,7 +4,7 @@ import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/auth/dtos/login_dto.dart';
 import 'package:chat/core/services/auth/dtos/signup_dto.dart';
 
-import '../../core/models/auth_model.dart';
+import '../../../core/models/auth_model.dart';
 import 'package:chat/util/theme_consumer.dart';
 import 'package:flutter/material.dart';
 import '../components/auth_form.dart';

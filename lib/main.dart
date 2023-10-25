@@ -1,4 +1,5 @@
-import 'package:chat/pages/auth_page.dart';
+import 'package:chat/core/services/auth/infra/auth_service_mock.dart';
+import 'package:chat/pages/app_proxy_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: const AuthPage(),
+      home: AppProxyPage(authService: AuthServiceMock.instance),
       debugShowCheckedModeBanner: false,
     );
   }

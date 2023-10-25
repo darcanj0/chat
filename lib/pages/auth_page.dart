@@ -17,6 +17,10 @@ class _AuthPageState extends State<AuthPage> with ThemeConsumer {
     setState(() {
       isLoading = true;
     });
+    print(authModel.email);
+    print(authModel.password);
+    print(authModel.name);
+    print(authModel.image?.path);
   }
 
   @override

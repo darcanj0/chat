@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chat/components/user_image_picker.dart';
 import 'package:chat/models/auth_model.dart';
 import 'package:chat/util/theme_consumer.dart';
@@ -6,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({required this.onSubmit, super.key});
-  final void Function(AuthModel) onSubmit;
+  final void Function(AuthModel model) onSubmit;
   @override
   State<AuthForm> createState() => _AuthFormState();
 }
@@ -16,33 +18,37 @@ class _AuthFormState extends State<AuthForm>
   final _formData = AuthModel();
   final formKey = GlobalKey<FormState>();
   bool selectingImage = false;
-  late final AnimationController fromLeftController;
-  late final Animation<Offset> fromLeftAnimation;
+  late final AnimationController fromRightController;
+  late final Animation<Offset> fromRightAnimation;
   late final AnimationController toLeftController;
   late final Animation<Offset> toLeftAnimation;
 
   @override
   void initState() {
-    fromLeftController = AnimationController(
+    fromRightController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     toLeftController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200));
     toLeftAnimation = Tween<Offset>(
             begin: Offset.zero, end: const Offset(-5, 0))
         .animate(CurvedAnimation(parent: toLeftController, curve: Curves.ease));
-    fromLeftAnimation =
+    fromRightAnimation =
         Tween<Offset>(begin: const Offset(5, 0), end: Offset.zero).animate(
-            CurvedAnimation(parent: fromLeftController, curve: Curves.ease));
+            CurvedAnimation(parent: fromRightController, curve: Curves.ease));
+
+    fromRightController.forward();
 
     super.initState();
   }
 
   @override
   void dispose() {
-    fromLeftController.dispose();
+    fromRightController.dispose();
     toLeftController.dispose();
     super.dispose();
   }
+
+  void selectImage(File image) => _formData.image = image;
 
   Future<void> submitForm() async {
     if (formKey.currentState!.validate()) {
@@ -52,9 +58,10 @@ class _AuthFormState extends State<AuthForm>
         setState(() {
           selectingImage = true;
         });
-        await fromLeftController.forward();
+        await fromRightController.forward();
+      } else {
+        widget.onSubmit(_formData);
       }
-      // widget.onSubmit(_formData);
     }
   }
 
@@ -96,8 +103,11 @@ class _AuthFormState extends State<AuthForm>
           padding: const EdgeInsets.all(10),
           child: selectingImage
               ? SlideTransition(
-                  position: fromLeftAnimation,
-                  child: UserImagePicker(onSelectImage: (_) {}),
+                  position: fromRightAnimation,
+                  child: UserImagePicker(
+                    onSelectImage: selectImage,
+                    onFinish: () => widget.onSubmit(_formData),
+                  ),
                 )
               : SlideTransition(
                   position: toLeftAnimation,

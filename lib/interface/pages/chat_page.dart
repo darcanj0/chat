@@ -17,7 +17,8 @@ class ChatPage extends StatelessWidget with ThemeConsumer {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Talkative Chat'),
-        backgroundColor: getPrimaryColor(context),
+        backgroundColor: getColorScheme(context).primaryContainer,
+        elevation: 8,
       ),
       body: SafeArea(
         child: SizedBox.expand(

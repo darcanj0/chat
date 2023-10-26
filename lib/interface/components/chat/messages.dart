@@ -43,19 +43,16 @@ class Messages extends StatelessWidget with ThemeConsumer {
         }
         final messages = snapshot.data?.reversed.toList() as List<ChatMessage>;
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+          padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             reverse: true,
             itemCount: messages.length,
             itemBuilder: (context, index) {
               final message = messages[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                child: MessageBubble(
-                  message: message,
-                  isFromCurrentUser: currentUser?.id == message.userId,
-                  key: Key(message.id),
-                ),
+              return MessageBubble(
+                message: message,
+                isFromCurrentUser: currentUser?.id == message.userId,
+                key: Key(message.id),
               );
             },
           ),

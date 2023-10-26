@@ -64,7 +64,7 @@ class ChatServiceMock implements IChatService {
 
   static MultiStreamController<List<ChatMessage>>? _streamController;
 
-  ChatServiceMock get instance => ChatServiceMock._();
+  static ChatServiceMock get instance => ChatServiceMock._();
 
   ChatServiceMock._();
 }

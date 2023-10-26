@@ -35,7 +35,10 @@ class _AuthPageState extends State<AuthPage> with ThemeConsumer {
             image: authModel.image as File));
       }
     } catch (e) {
-      // print(e);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: const Text('Incorrect email and/or password'),
+        backgroundColor: getColorScheme(context).error,
+      ));
     } finally {
       setState(() => isLoading = false);
     }

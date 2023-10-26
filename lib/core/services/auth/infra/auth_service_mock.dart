@@ -19,6 +19,9 @@ class AuthServiceMock implements IAuthService {
 
   @override
   Future<void> login(ILoginDto dto) async {
+    if (_users[dto.email] == null) {
+      throw Error();
+    }
     _updateUser(_users[dto.email]);
   }
 

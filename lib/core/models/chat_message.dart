@@ -7,7 +7,7 @@ class ChatMessage {
   final String userName;
   final String userImageUrl;
 
-  ChatMessage({
+  const ChatMessage({
     required this.id,
     required this.text,
     required this.sentAt,

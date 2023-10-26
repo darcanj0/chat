@@ -70,6 +70,7 @@ class MessageBubble extends StatelessWidget with ThemeConsumer {
               Text(
                 message.userName,
                 style: getTextTheme(context).bodyLarge,
+                textAlign: isFromCurrentUser ? TextAlign.end : TextAlign.start,
               ),
               Text(
                 message.text,

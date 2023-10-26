@@ -1,5 +1,5 @@
 import 'package:chat/core/services/auth/auth_service.dart';
-import 'package:chat/core/services/auth/infra/auth_service_mock.dart';
+import 'package:chat/core/services/chat/chat_service.dart';
 import 'package:chat/core/services/chat/infra/chat_service_mock.dart';
 import 'package:chat/interface/components/chat/messages.dart';
 import 'package:chat/interface/components/nav/app_drawer.dart';
@@ -8,9 +8,13 @@ import 'package:chat/util/theme_consumer.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget with ThemeConsumer {
-  const ChatPage({required this.authService, super.key});
+  ChatPage({
+    required this.authService,
+    super.key,
+  });
 
   final IAuthService authService;
+  final IChatService chatService = ChatServiceMock.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +32,13 @@ class ChatPage extends StatelessWidget with ThemeConsumer {
             children: [
               Expanded(
                   child: Messages(
-                chatService: ChatServiceMock.instance,
-                authService: AuthServiceMock.instance,
+                chatService: chatService,
+                authService: authService,
               )),
-              NewMessage(),
+              NewMessage(
+                chatService: chatService,
+                authService: authService,
+              ),
             ],
           ),
         ),

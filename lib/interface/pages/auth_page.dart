@@ -7,7 +7,7 @@ import 'package:chat/core/services/auth/dtos/signup_dto.dart';
 import '../../../core/models/auth_model.dart';
 import 'package:chat/util/theme_consumer.dart';
 import 'package:flutter/material.dart';
-import '../components/auth_form.dart';
+import '../components/forms/auth_form.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({required this.authService, super.key});
@@ -35,7 +35,7 @@ class _AuthPageState extends State<AuthPage> with ThemeConsumer {
             image: authModel.image as File));
       }
     } catch (e) {
-      print(e);
+      // print(e);
     } finally {
       setState(() => isLoading = false);
     }

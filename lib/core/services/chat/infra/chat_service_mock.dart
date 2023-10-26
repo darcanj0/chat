@@ -32,26 +32,26 @@ class ChatServiceMock implements IChatService {
 
   static final List<ChatMessage> _messages = [
     ChatMessage(
-      id: 'id',
+      id: 'id1',
       text: 'Hello, there',
       sentAt: DateTime.now(),
-      userId: 'userId',
+      userId: 'id',
       userImageUrl: 'assets/default_avatar.png',
       userName: 'Daniel',
     ),
     ChatMessage(
-      id: 'id1',
+      id: 'id2',
       text: 'Hi everyone',
       sentAt: DateTime.now(),
-      userId: 'userId',
+      userId: 'userId1',
       userImageUrl: 'assets/default_avatar.png',
       userName: 'Joana',
     ),
     ChatMessage(
-      id: 'id1',
+      id: 'id3',
       text: 'Can anyone pick me up at 8pm?',
       sentAt: DateTime.now(),
-      userId: 'userId',
+      userId: 'userId2',
       userImageUrl: 'assets/default_avatar.png',
       userName: 'Mariann',
     ),

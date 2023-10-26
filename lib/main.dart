@@ -17,6 +17,19 @@ class MyApp extends StatelessWidget {
     );
 
     final textTheme = TextTheme(
+        bodySmall: const TextStyle(
+          fontSize: 13,
+        ),
+        bodyMedium: const TextStyle(
+          fontSize: 17,
+          color: Colors.black87,
+          fontWeight: FontWeight.w400,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 18,
+          color: colorScheme.primary,
+          fontWeight: FontWeight.w500,
+        ),
         displayLarge: TextStyle(
           color: colorScheme.onPrimary,
           fontSize: 40,

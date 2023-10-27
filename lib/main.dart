@@ -1,9 +1,18 @@
 import 'package:chat/core/services/auth/infra/auth_service_mock.dart';
+import 'package:chat/core/services/notification/push_notification_service.dart';
 import 'package:chat/interface/pages/app_proxy_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => ChatNotificationService(),
+      )
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

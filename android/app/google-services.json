@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "41475249711",
+    "project_id": "talkative-5d7e0",
+    "storage_bucket": "talkative-5d7e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41475249711:android:84dde2d221f0f5502c58da",
+        "android_client_info": {
+          "package_name": "com.example.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaOo9HPYZHXrpiAxfbrCKWTevFZpqI4KI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

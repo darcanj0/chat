@@ -1,10 +1,16 @@
 import 'package:chat/core/services/auth/infra/auth_service_mock.dart';
 import 'package:chat/core/services/notification/push_notification_service.dart';
+import 'package:chat/firebase_options.dart';
 import 'package:chat/interface/pages/app_proxy_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(

@@ -19,7 +19,7 @@ class AppDrawer extends StatelessWidget with ThemeConsumer {
             padding: const EdgeInsets.only(bottom: 15, left: 30),
             color: getPrimaryColor(context),
             child: Text(
-              'Talkative',
+              'Hello, ${authService.currentUser?.name}',
               style: getTextTheme(context).displayMedium,
             ),
           ),

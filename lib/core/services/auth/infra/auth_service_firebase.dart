@@ -4,6 +4,7 @@ import 'package:chat/core/models/chat_user.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/auth/dtos/login_dto.dart';
 import 'package:chat/core/services/auth/dtos/signup_dto.dart';
+import 'package:chat/core/services/database/database_service.dart';
 import 'package:chat/core/services/storage/storage_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -26,6 +27,7 @@ class AuthServiceFirebase implements IAuthService {
   ChatUser? get currentUser => _currentUser;
 
   static final _storageService = IStorageService();
+  static final _dbService = IDbService();
 
   @override
   Future<void> login(ILoginDto dto) async {
@@ -50,11 +52,19 @@ class AuthServiceFirebase implements IAuthService {
 
     if (credential.user == null) return;
     final avatarUrl = await _storageService.uploadProfilePicture(
-      credential.user?.uid ?? '',
+      credential.user!.uid,
       dto.image,
     );
-    credential.user?.updatePhotoURL(avatarUrl);
-    await credential.user?.updateDisplayName(dto.name);
+    credential.user!.updatePhotoURL(avatarUrl);
+
+    await credential.user!.updateDisplayName(dto.name);
+
+    await _dbService.saveUser(ChatUser(
+      id: credential.user!.uid,
+      name: dto.name,
+      email: dto.email,
+      imageUrl: avatarUrl ?? '',
+    ));
   }
 
   @override

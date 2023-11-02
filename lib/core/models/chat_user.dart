@@ -22,4 +22,13 @@ class ChatUser {
       imageUrl: user.photoURL ?? 'assets/default_avatar.png',
     );
   }
+
+  Map<String, String> toPersistence() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'imageUrl': imageUrl,
+    };
+  }
 }

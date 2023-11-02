@@ -20,13 +20,12 @@ class MessageBubble extends StatelessWidget with ThemeConsumer {
 
   Widget getUserAvatar(String imageUrl) {
     ImageProvider provider;
-    final uri = Uri.parse(imageUrl);
-    if (uri.path.contains('http')) {
-      provider = NetworkImage(uri.toString());
-    } else if (uri.path.contains('assets/')) {
-      provider = AssetImage(uri.toString());
+    if (imageUrl.contains('http')) {
+      provider = NetworkImage(imageUrl);
+    } else if (imageUrl.contains('assets/')) {
+      provider = AssetImage(imageUrl);
     } else {
-      provider = FileImage(File(uri.toString()));
+      provider = FileImage(File(imageUrl));
     }
 
     return Padding(

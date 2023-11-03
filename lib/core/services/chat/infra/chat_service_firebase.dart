@@ -3,66 +3,29 @@ import 'dart:async';
 import 'package:chat/core/models/chat_message.dart';
 import 'package:chat/core/models/chat_user.dart';
 import 'package:chat/core/services/chat/chat_service.dart';
-import 'package:chat/core/services/id/id_provider.dart';
+import 'package:chat/core/services/database/database_service.dart';
 
 class ChatServiceFirebase implements IChatService {
-  static final _idProvider = IIdProvider();
+  static final _dbProvider = IDbService();
+
+  static const _messagesStream = Stream<List<ChatMessage>>.empty();
 
   @override
   Stream<List<ChatMessage>> messagesStream() => _messagesStream;
 
   @override
-  Future<ChatMessage> save(String text, ChatUser sender) async {
-    final newMessage = ChatMessage(
-      id: _idProvider.generate(),
+  Future<void> save(String text, ChatUser sender) async {
+    final message = ChatMessage(
+      id: '',
       text: text,
       sentAt: DateTime.now(),
       userId: sender.id,
       userImageUrl: sender.imageUrl,
       userName: sender.name,
     );
-    _updateStream(newMessage);
-    return newMessage;
+
+    await _dbProvider.saveMessage(message);
   }
-
-  void _updateStream(ChatMessage message) {
-    _messages.add(message);
-    _streamController?.add(_messages);
-  }
-
-  static final List<ChatMessage> _messages = [
-    ChatMessage(
-      id: 'id1',
-      text: 'Hello, there',
-      sentAt: DateTime.now(),
-      userId: 'id',
-      userImageUrl: 'assets/default_avatar.png',
-      userName: 'Daniel',
-    ),
-    ChatMessage(
-      id: 'id2',
-      text: 'Hi everyone',
-      sentAt: DateTime.now(),
-      userId: 'userId1',
-      userImageUrl: 'assets/default_avatar.png',
-      userName: 'Joana',
-    ),
-    ChatMessage(
-      id: 'id3',
-      text: 'Can anyone pick me up at 8pm?',
-      sentAt: DateTime.now(),
-      userId: 'userId2',
-      userImageUrl: 'assets/default_avatar.png',
-      userName: 'Mariann',
-    ),
-  ];
-
-  final _messagesStream = Stream<List<ChatMessage>>.multi((p0) {
-    _streamController = p0;
-    _streamController?.add(_messages);
-  });
-
-  static MultiStreamController<List<ChatMessage>>? _streamController;
 
   static ChatServiceFirebase get instance => ChatServiceFirebase._();
 

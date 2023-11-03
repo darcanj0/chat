@@ -15,4 +15,27 @@ class ChatMessage {
     required this.userImageUrl,
     required this.userName,
   });
+
+  Map<String, String> toPersistence() {
+    return {
+      'id': id,
+      'text': text,
+      'sentAt': sentAt.toIso8601String(),
+      'userId': userId,
+      'userName': userName,
+      'userImageUrl': userImageUrl,
+    };
+  }
+
+  static ChatMessage fromPersistence(
+      String id, Map<String, dynamic> messageData) {
+    return ChatMessage(
+      id: id,
+      text: messageData['text'],
+      sentAt: DateTime.parse(messageData['sentAt']),
+      userId: messageData['senderId'],
+      userImageUrl: messageData['userImageUrl'],
+      userName: messageData['userName'],
+    );
+  }
 }

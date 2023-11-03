@@ -44,7 +44,7 @@ class ChatPage extends StatelessWidget with ThemeConsumer {
             child: IconButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => NotificationsPage(),
+                  builder: (context) => const NotificationsPage(),
                 ));
               },
               icon: const Icon(Icons.notifications),

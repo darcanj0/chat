@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chat/core/models/chat_message.dart';
+import 'package:chat/core/models/entities/chat_message.dart';
 import 'package:chat/util/theme_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

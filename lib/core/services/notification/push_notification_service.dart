@@ -1,4 +1,4 @@
-import 'package:chat/core/models/chat_notification.dart';
+import 'package:chat/core/models/entities/chat_notification.dart';
 import 'package:flutter/material.dart';
 
 abstract class IChatNotificationService {

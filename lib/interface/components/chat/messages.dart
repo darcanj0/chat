@@ -1,4 +1,4 @@
-import 'package:chat/core/models/chat_message.dart';
+import 'package:chat/core/models/entities/chat_message.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/chat/chat_service.dart';
 import 'package:chat/interface/components/chat/message_bubble.dart';

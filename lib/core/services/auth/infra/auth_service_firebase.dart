@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:chat/core/models/chat_user.dart';
+import 'package:chat/core/models/entities/chat_user.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/auth/dtos/login_dto.dart';
 import 'package:chat/core/services/auth/dtos/signup_dto.dart';

@@ -1,6 +1,5 @@
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/chat/chat_service.dart';
-import 'package:chat/core/services/chat/infra/chat_service_mock.dart';
 import 'package:chat/core/services/notification/push_notification_service.dart';
 import 'package:chat/interface/components/chat/messages.dart';
 import 'package:chat/interface/components/nav/app_drawer.dart';
@@ -18,7 +17,7 @@ class ChatPage extends StatelessWidget with ThemeConsumer {
   });
 
   final IAuthService authService;
-  final IChatService chatService = ChatServiceMock.instance;
+  final IChatService chatService = IChatService();
 
   @override
   Widget build(BuildContext context) {

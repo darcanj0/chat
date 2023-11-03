@@ -3,5 +3,5 @@ import 'package:chat/core/services/database/infra/database_service_firebase.dart
 
 abstract class IDbService {
   Future<void> saveUser(ChatUser user);
-  factory IDbService() => DbServiceFirebase();
+  factory IDbService() => DbServiceFirebase.instance;
 }

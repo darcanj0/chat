@@ -7,6 +7,8 @@ abstract class IChatNotificationService {
   void add(ChatNotification notification);
   void remove(int index);
   void removeAll();
+
+  factory IChatNotificationService() => ChatNotificationService();
 }
 
 class ChatNotificationService

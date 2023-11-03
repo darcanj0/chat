@@ -5,7 +5,7 @@ import 'package:chat/core/models/chat_user.dart';
 import 'package:chat/core/services/chat/chat_service.dart';
 import 'package:chat/core/services/id/id_provider.dart';
 
-class ChatServiceMock implements IChatService {
+class ChatServiceFirebase implements IChatService {
   static final _idProvider = IIdProvider();
 
   @override
@@ -64,7 +64,7 @@ class ChatServiceMock implements IChatService {
 
   static MultiStreamController<List<ChatMessage>>? _streamController;
 
-  static ChatServiceMock get instance => ChatServiceMock._();
+  static ChatServiceFirebase get instance => ChatServiceFirebase._();
 
-  ChatServiceMock._();
+  ChatServiceFirebase._();
 }

@@ -15,7 +15,7 @@ class AuthServiceMock implements IAuthService {
       imageUrl: 'assets/default_avatar.png',
     )
   };
-  static final IIdProvider _idProvider = UUIDProvider();
+  static final _idProvider = IIdProvider();
 
   @override
   Future<void> login(ILoginDto dto) async {

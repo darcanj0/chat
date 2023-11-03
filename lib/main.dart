@@ -1,4 +1,4 @@
-import 'package:chat/core/services/auth/infra/auth_service_firebase.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/notification/push_notification_service.dart';
 import 'package:chat/firebase_options.dart';
 import 'package:chat/interface/pages/app_proxy_page.dart';
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: AppProxyPage(authService: AuthServiceFirebase.instance),
+      home: AppProxyPage(authService: IAuthService()),
       debugShowCheckedModeBanner: false,
     );
   }

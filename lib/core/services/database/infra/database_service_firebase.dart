@@ -9,4 +9,8 @@ class DbServiceFirebase implements IDbService {
     await _db.collection('users').doc(user.id).set(user.toPersistence());
     print('object');
   }
+
+  DbServiceFirebase._();
+
+  static DbServiceFirebase get instance => DbServiceFirebase._();
 }

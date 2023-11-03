@@ -41,7 +41,7 @@ class Messages extends StatelessWidget with ThemeConsumer {
             )
           ]);
         }
-        final messages = snapshot.data?.reversed.toList() as List<ChatMessage>;
+        final messages = snapshot.data as List<ChatMessage>;
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(

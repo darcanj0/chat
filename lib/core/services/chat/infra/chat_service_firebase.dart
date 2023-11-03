@@ -16,6 +16,7 @@ class ChatServiceFirebase implements IChatService {
         fromFirestore: _mapper.fromFirestore,
         toFirestore: _mapper.toFirestore,
       )
+      .orderBy('sentAt', descending: true)
       .snapshots();
 
   static final _messagesStream = Stream<List<ChatMessage>>.multi((p0) {

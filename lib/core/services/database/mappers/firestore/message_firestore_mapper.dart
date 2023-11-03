@@ -11,7 +11,7 @@ class ChatMessageFirestoreMapper implements IFireStoreMapper<ChatMessage> {
     return mapperDelegate!.fromPersistence({
       'id': doc.id,
       'text': doc['text'],
-      'sentAt': DateTime.parse(doc['sentAt']),
+      'sentAt': doc['sentAt'],
       'userId': doc['userId'],
       'userImageUrl': doc['userImageUrl'],
       'userName': doc['userName'],

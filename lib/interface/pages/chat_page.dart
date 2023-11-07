@@ -19,6 +19,10 @@ class ChatPage extends StatelessWidget with ThemeConsumer {
   final IAuthService authService;
   final IChatService chatService = IChatService();
 
+  Future<void> init(BuildContext ctx) async {
+    await ctx.read<ChatNotificationService>().initService();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,29 +31,37 @@ class ChatPage extends StatelessWidget with ThemeConsumer {
         backgroundColor: getColorScheme(context).primaryContainer,
         elevation: 8,
         actions: [
-          Consumer<ChatNotificationService>(
-            builder: (_, notifications, child) {
-              return badges.Badge(
-                badgeAnimation: const badges.BadgeAnimation.slide(),
-                position: badges.BadgePosition.custom(bottom: 20, start: 25),
-                ignorePointer: true,
-                showBadge: notifications.itemsAmmount > 0,
-                badgeContent: Text(
-                  notifications.itemsAmmount.toString(),
-                  style: getTextTheme(context).bodySmall,
-                ),
-                child: child,
-              );
-            },
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const NotificationsPage(),
-                ));
-              },
-              icon: const Icon(Icons.notifications),
-            ),
-          )
+          FutureBuilder(
+              future: init(context),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator.adaptive();
+                }
+                return Consumer<ChatNotificationService>(
+                  builder: (_, notifications, child) {
+                    return badges.Badge(
+                      badgeAnimation: const badges.BadgeAnimation.slide(),
+                      position:
+                          badges.BadgePosition.custom(bottom: 20, start: 25),
+                      ignorePointer: true,
+                      showBadge: notifications.itemsAmmount > 0,
+                      badgeContent: Text(
+                        notifications.itemsAmmount.toString(),
+                        style: getTextTheme(context).bodySmall,
+                      ),
+                      child: child,
+                    );
+                  },
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const NotificationsPage(),
+                      ));
+                    },
+                    icon: const Icon(Icons.notifications),
+                  ),
+                );
+              })
         ],
       ),
       body: SafeArea(
